@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdullah Khan — AI Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --y: #E2FF00;
+  --bg: #0B0B0B;
+  --sf: #131313;
+  --bd: #1F1F1F;
+  --wh: #F0EFE9;
+  --mu: #5A5A5A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--wh);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.pk-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid var(--bd);
+}
+.pk-logo { font-size: 15px; font-weight: 700; color: var(--wh); letter-spacing: 0.06em; text-decoration: none; }
+.pk-navlinks { display: flex; gap: 2rem; list-style: none; }
+.pk-navlinks a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mu); text-decoration: none; transition: color 0.2s; }
+.pk-navlinks a:hover { color: var(--y); }
+.pk-cta { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg); background: var(--y); padding: 0.5rem 1.4rem; text-decoration: none; font-weight: 700; display: inline-block; transition: opacity 0.2s; }
+.pk-cta:hover { opacity: 0.85; }
+.pk-cv-btn { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--y); border: 0.5px solid rgba(226,255,0,0.4); padding: 0.5rem 1.1rem; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s, color 0.2s; }
+.pk-cv-btn:hover { background: rgba(226,255,0,0.08); }
+
+/* HERO */
+.pk-hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 2.5rem 3rem;
+  background: var(--bg);
+  border-bottom: 0.5px solid var(--bd);
+}
+.pk-hmeta { display: flex; align-items: center; justify-content: space-between; margin-bottom: auto; padding-top: 4rem; }
+.pk-havail { display: flex; align-items: center; gap: 0.55rem; }
+.pk-dot { width: 7px; height: 7px; background: var(--y); border-radius: 50%; animation: blink 2.5s ease-in-out infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.pk-hatext { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mu); }
+.pk-hloc { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mu); }
+
+.pk-hname {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 13vw, 11rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  color: var(--wh);
+  margin-bottom: 2.5rem;
+}
+.pk-hy { color: var(--y); }
+
+.pk-hbottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--bd);
+  gap: 2rem;
+}
+.pk-htag { font-size: 16px; color: var(--mu); line-height: 1.65; max-width: 44ch; }
+.pk-htag strong { color: var(--wh); font-weight: 500; }
+.pk-hcta { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--y); text-decoration: none; display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; white-space: nowrap; transition: gap 0.3s; }
+.pk-hcta:hover { gap: 1.25rem; }
+.pk-hline { width: 36px; height: 0.5px; background: var(--y); display: inline-block; transition: width 0.3s; }
+.pk-hcta:hover .pk-hline { width: 56px; }
+
+/* MARQUEE */
+.pk-mq { background: var(--sf); border-bottom: 0.5px solid var(--bd); padding: 0.85rem 0; overflow: hidden; }
+.pk-mtrack { display: flex; width: max-content; animation: pk-scroll 28s linear infinite; }
+.pk-mitem { display: flex; align-items: center; gap: 1.25rem; padding: 0 1.75rem; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mu); white-space: nowrap; }
+.pk-mdot { width: 4px; height: 4px; background: var(--y); border-radius: 50%; flex-shrink: 0; }
+@keyframes pk-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SECTION LABEL */
+.pk-sl { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 2.5rem; }
+.pk-snum { font-size: 12px; letter-spacing: 0.18em; color: var(--y); }
+.pk-stxt { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mu); }
+
+/* FEATURED PROJECT */
+.pk-feat { background: var(--bg); padding: 4rem 2.5rem; border-bottom: 0.5px solid var(--bd); }
+.pk-feat-card {
+  border: 0.5px solid var(--bd);
+  background: var(--sf);
+  display: grid;
+  grid-template-columns: auto 1fr 200px;
+  align-items: stretch;
+  text-decoration: none;
+  color: var(--wh);
+  transition: border-color 0.25s;
+  overflow: hidden;
+}
+.pk-feat-card:hover { border-color: rgba(226,255,0,0.35); }
+.pk-feat-main { padding: 2.5rem; display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start; }
+.pk-feat-num { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; font-style: italic; color: var(--bd); line-height: 1; transition: color 0.25s; }
+.pk-feat-card:hover .pk-feat-num { color: var(--y); }
+.pk-feat-badge { display: inline-block; background: var(--y); color: var(--bg); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; padding: 0.25rem 0.8rem; margin-bottom: 1rem; }
+.pk-ftags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.85rem; }
+.pk-ftag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mu); border: 0.5px solid var(--bd); padding: 0.2rem 0.55rem; }
+.pk-feat-name { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.85rem; transition: color 0.25s; }
+.pk-feat-card:hover .pk-feat-name { color: var(--y); }
+.pk-feat-desc { font-size: 15px; color: var(--mu); line-height: 1.75; max-width: 56ch; margin-bottom: 1.5rem; }
+.pk-feat-link { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--y); display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; }
+.pk-feat-thumb {
+  border-left: 0.5px solid var(--bd);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  transition: background 0.3s;
+}
+.pk-feat-card:hover .pk-feat-thumb { background: rgba(226,255,0,0.02); }
+
+/* WORK LIST */
+.pk-work { background: var(--bg); padding: 0 2.5rem 4rem; }
+.pk-proj {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 0.5px solid var(--bd);
+  text-decoration: none;
+  color: var(--wh);
+  overflow: hidden;
+}
+.pk-proj:first-of-type { border-top: 0.5px solid var(--bd); }
+.pk-pnum { font-family: 'Playfair Display', serif; font-size: 2.75rem; font-weight: 700; font-style: italic; color: var(--bd); line-height: 1; transition: color 0.25s; flex-shrink: 0; width: 60px; align-self: flex-start; padding-top: 0.25rem; }
+.pk-proj:hover .pk-pnum { color: var(--y); }
+.pk-pcontent { flex: 1; min-width: 0; }
+.pk-ptags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.7rem; }
+.pk-ptag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mu); border: 0.5px solid var(--bd); padding: 0.2rem 0.5rem; }
+.pk-pname { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.65rem; transition: color 0.25s; }
+.pk-proj:hover .pk-pname { color: var(--y); }
+.pk-pdesc { font-size: 14px; color: var(--mu); line-height: 1.75; }
+.pk-thumb-wrap {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  flex-shrink: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  transition: width 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+}
+.pk-proj:hover .pk-thumb-wrap { width: 148px; opacity: 1; }
+.pk-thumb {
+  width: 148px;
+  flex-shrink: 0;
+  border: 0.5px solid var(--bd);
+  background: var(--sf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  align-self: stretch;
+}
+.pk-parrow { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0.5px solid var(--bd); color: var(--mu); flex-shrink: 0; transition: border-color 0.25s, color 0.25s; font-size: 18px; }
+.pk-proj:hover .pk-parrow { border-color: var(--y); color: var(--y); }
+
+/* ABOUT */
+.pk-about { background: var(--sf); padding: 5rem 2.5rem; border-top: 0.5px solid var(--bd); }
+.pk-agrid { display: grid; grid-template-columns: 1fr 1.65fr; gap: 5rem; align-items: start; }
+.pk-stats { display: flex; flex-direction: column; gap: 2.5rem; }
+.pk-stn { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--y); line-height: 1; display: block; }
+.pk-stl { font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--mu); margin-top: 0.3rem; }
+.pk-ah { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.75rem; }
+.pk-bio { font-size: 15px; line-height: 1.85; color: rgba(240,239,233,0.65); margin-bottom: 1.1rem; }
+.pk-phil { border-left: 2px solid var(--y); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0; }
+.pk-phil p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; line-height: 1.7; color: var(--wh); }
+.pk-skills { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.75rem; }
+.pk-skill { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--y); border: 0.5px solid rgba(226,255,0,0.25); padding: 0.3rem 0.7rem; background: rgba(226,255,0,0.04); }
+
+/* REVIEWS */
+.pk-rev { background: var(--bg); padding: 5rem 2.5rem; border-top: 0.5px solid var(--bd); }
+.pk-rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.pk-rcard { background: var(--sf); border: 0.5px solid var(--bd); padding: 2rem; }
+.pk-qm { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--y); opacity: 0.22; line-height: 1; margin-bottom: 0.25rem; }
+.pk-rt { font-size: 14px; line-height: 1.8; color: rgba(240,239,233,0.65); margin-bottom: 1.5rem; }
+.pk-rn { font-size: 14px; font-weight: 500; color: var(--wh); }
+.pk-rr { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mu); margin-top: 0.2rem; }
+
+/* FOOTER */
+.pk-foot { background: var(--bg); border-top: 0.5px solid var(--bd); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+.pk-fc { font-size: 13px; color: var(--mu); }
+.pk-fl { display: flex; gap: 2rem; }
+.pk-fl a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mu); text-decoration: none; transition: color 0.2s; }
+.pk-fl a:hover { color: var(--y); }
+
+/* FADE IN + SCALE */
+.pk-fade { opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.6s ease, transform 0.6s ease; }
+.pk-vis { opacity: 1; transform: translateY(0) scale(1); }
+
+@media (max-width: 768px) {
+  .pk-agrid { grid-template-columns: 1fr; gap: 3rem; }
+  .pk-rgrid { grid-template-columns: 1fr; gap: 1rem; }
+  .pk-feat-card { grid-template-columns: 1fr; }
+  .pk-feat-main { grid-template-columns: 1fr; }
+  .pk-feat-thumb { display: none; }
+  .pk-thumb-wrap { display: none; }
+  .pk-feat-num { font-size: 3rem; }
+  .pk-nav { padding: 1rem 1.25rem; }
+  .pk-hero { padding: 0 1.25rem 2.5rem; }
+  .pk-feat, .pk-work, .pk-about, .pk-rev { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .pk-hname { font-size: clamp(3.5rem, 18vw, 6rem); }
+}
+</style>
+</head>
+<body>
+
+  <nav class="pk-nav">
+    <a href="#" class="pk-logo">AK</a>
+    <ul class="pk-navlinks">
+      <li><a href="#pk-work">Work</a></li>
+      <li><a href="#pk-about">About</a></li>
+      <li><a href="https://github.com/abdullah1234-bit" target="_blank">GitHub</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="Muhammad_Abdullah_Khan_CV.pdf" download class="pk-cv-btn">
+        <i class="ti ti-download" aria-hidden="true"></i> Download CV
+      </a>
+      <a href="mailto:muabdullahkhan28@gmail.com" class="pk-cta">Hire me</a>
+    </div>
+  </nav>
+
+  <section class="pk-hero">
+    <div class="pk-hmeta">
+      <div class="pk-havail">
+        <div class="pk-dot"></div>
+        <span class="pk-hatext">Open to work · 2026</span>
+      </div>
+      <span class="pk-hloc">Ingolstadt, Germany</span>
+    </div>
+    <h1 class="pk-hname">Abdul<span class="pk-hy">lah</span><br>Khan</h1>
+    <div class="pk-hbottom">
+      <p class="pk-htag"><strong>AI Automation Engineer</strong> — building agentic LLM systems, RAG pipelines, and conversational AI that ships to production.</p>
+      <a href="#pk-work" class="pk-hcta">View work <span class="pk-hline"></span></a>
+    </div>
+  </section>
+
+  <div class="pk-mq">
+    <div class="pk-mtrack">
+      <span class="pk-mitem">Agentic AI <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">LLM systems <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">RAG pipelines <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">n8n automation <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Conversational AI <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Vector search <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Tool integration <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Production AI <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Agentic AI <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">LLM systems <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">RAG pipelines <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">n8n automation <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Conversational AI <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Vector search <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Tool integration <span class="pk-mdot"></span></span>
+      <span class="pk-mitem">Production AI <span class="pk-mdot"></span></span>
+    </div>
+  </div>
+
+  <section class="pk-feat" id="pk-work">
+    <div class="pk-sl pk-fade">
+      <span class="pk-snum">01</span>
+      <span class="pk-stxt">Selected work</span>
+    </div>
+    <a class="pk-feat-card pk-fade" href="https://github.com/abdullah1234-bit/ai-support-deflection" target="_blank">
+      <div class="pk-feat-main">
+        <div class="pk-feat-num">01</div>
+        <div>
+          <span class="pk-feat-badge">Featured project</span>
+          <div class="pk-ftags">
+            <span class="pk-ftag">RAG</span>
+            <span class="pk-ftag">n8n</span>
+            <span class="pk-ftag">Google Gemini</span>
+            <span class="pk-ftag">Vector search</span>
+            <span class="pk-ftag">Escalation logic</span>
+          </div>
+          <h3 class="pk-feat-name">AI Support Deflection</h3>
+          <p class="pk-feat-desc">A production-grade customer support assistant that answers from a company's knowledge base via RAG, then intelligently escalates complaints, refunds, and edge-case queries to humans — built on the principle that an assistant that guesses confidently is worse than no assistant at all.</p>
+          <span class="pk-feat-link">View on GitHub <i class="ti ti-arrow-up-right"></i></span>
+        </div>
+      </div>
+      <div class="pk-feat-thumb">
+        <svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg" width="160" height="240">
+          <rect x="12" y="12" width="38" height="48" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+          <rect x="19" y="21" width="24" height="3" fill="#252525" rx="1"/>
+          <rect x="19" y="28" width="18" height="3" fill="#252525" rx="1"/>
+          <rect x="19" y="35" width="22" height="3" fill="#E2FF00" rx="1" opacity="0.35"/>
+          <rect x="19" y="42" width="16" height="3" fill="#252525" rx="1"/>
+          <rect x="61" y="8" width="38" height="48" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+          <rect x="68" y="17" width="24" height="3" fill="#252525" rx="1"/>
+          <rect x="68" y="24" width="18" height="3" fill="#252525" rx="1"/>
+          <rect x="68" y="31" width="22" height="3" fill="#252525" rx="1"/>
+          <rect x="68" y="38" width="16" height="3" fill="#252525" rx="1"/>
+          <rect x="110" y="12" width="38" height="48" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+          <rect x="117" y="21" width="24" height="3" fill="#252525" rx="1"/>
+          <rect x="117" y="28" width="18" height="3" fill="#E2FF00" rx="1" opacity="0.35"/>
+          <rect x="117" y="35" width="22" height="3" fill="#252525" rx="1"/>
+          <rect x="117" y="42" width="16" height="3" fill="#252525" rx="1"/>
+          <circle cx="31" cy="74" r="4" fill="#E2FF00" opacity="0.65"/>
+          <circle cx="80" cy="74" r="4" fill="#E2FF00" opacity="0.65"/>
+          <circle cx="129" cy="74" r="4" fill="#E2FF00" opacity="0.65"/>
+          <line x1="31" y1="60" x2="31" y2="70" stroke="#2D2D2D" stroke-width="0.7"/>
+          <line x1="80" y1="56" x2="80" y2="70" stroke="#2D2D2D" stroke-width="0.7"/>
+          <line x1="129" y1="60" x2="129" y2="70" stroke="#2D2D2D" stroke-width="0.7"/>
+          <line x1="31" y1="78" x2="77" y2="118" stroke="#252525" stroke-width="0.7"/>
+          <line x1="80" y1="78" x2="80" y2="118" stroke="#252525" stroke-width="0.7"/>
+          <line x1="129" y1="78" x2="83" y2="118" stroke="#252525" stroke-width="0.7"/>
+          <circle cx="80" cy="130" r="16" fill="#1A1A1A" stroke="#E2FF00" stroke-width="0.8"/>
+          <circle cx="80" cy="130" r="5" fill="#E2FF00"/>
+          <line x1="67" y1="141" x2="46" y2="170" stroke="#252525" stroke-width="0.7"/>
+          <rect x="18" y="172" width="56" height="40" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="2"/>
+          <rect x="26" y="181" width="40" height="3" fill="#252525" rx="1"/>
+          <rect x="26" y="188" width="32" height="3" fill="#252525" rx="1"/>
+          <rect x="26" y="195" width="36" height="3" fill="#E2FF00" rx="1" opacity="0.25"/>
+          <line x1="93" y1="141" x2="114" y2="170" stroke="#1E1E1E" stroke-width="0.7" stroke-dasharray="3,2"/>
+          <rect x="98" y="172" width="48" height="40" fill="#141414" stroke="#1E1E1E" stroke-width="0.5" rx="2"/>
+          <circle cx="142" cy="170" r="4" fill="#E2FF00" opacity="0.3"/>
+          <rect x="106" y="184" width="32" height="3" fill="#1C1C1C" rx="1"/>
+          <rect x="106" y="191" width="24" height="3" fill="#1C1C1C" rx="1"/>
+          <rect x="106" y="198" width="28" height="3" fill="#1C1C1C" rx="1"/>
+        </svg>
+      </div>
+    </a>
+  </section>
+
+  <section class="pk-work">
+    <a class="pk-proj pk-fade" href="https://github.com/abdullah1234-bit/auto-job-application-n8n" target="_blank">
+      <div class="pk-pnum">02</div>
+      <div class="pk-pcontent">
+        <div class="pk-ptags">
+          <span class="pk-ptag">n8n</span>
+          <span class="pk-ptag">Workflow automation</span>
+          <span class="pk-ptag">LLM</span>
+        </div>
+        <h3 class="pk-pname">Auto Job Application Assistant</h3>
+        <p class="pk-pdesc">An n8n workflow automating the end-to-end job application process — from parsing listings to tailoring applications. Hours of effort reduced to a single trigger.</p>
+      </div>
+      <div class="pk-thumb-wrap">
+        <div class="pk-thumb">
+          <svg viewBox="0 0 148 90" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect x="6" y="30" width="24" height="24" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+            <circle cx="18" cy="42" r="4" fill="#252525"/>
+            <line x1="30" y1="42" x2="42" y2="42" stroke="#252525" stroke-width="0.8"/>
+            <polygon points="40,39 44,42 40,45" fill="#252525"/>
+            <rect x="44" y="25" width="28" height="34" fill="#1A1A1A" stroke="#E2FF00" stroke-width="0.8" rx="1"/>
+            <circle cx="58" cy="42" r="6" fill="#E2FF00"/>
+            <line x1="72" y1="42" x2="84" y2="42" stroke="#252525" stroke-width="0.8"/>
+            <polygon points="82,39 86,42 82,45" fill="#252525"/>
+            <rect x="86" y="30" width="24" height="24" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+            <circle cx="98" cy="42" r="4" fill="#252525"/>
+            <line x1="110" y1="42" x2="122" y2="42" stroke="#252525" stroke-width="0.8"/>
+            <polygon points="120,39 124,42 120,45" fill="#252525"/>
+            <rect x="124" y="30" width="18" height="24" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+            <rect x="128" y="38" width="10" height="2.5" fill="#252525" rx="1"/>
+            <rect x="128" y="43" width="7" height="2.5" fill="#252525" rx="1"/>
+            <rect x="6" y="16" width="24" height="3" fill="#1A1A1A" rx="1"/>
+            <rect x="86" y="16" width="24" height="3" fill="#1A1A1A" rx="1"/>
+            <rect x="124" y="16" width="18" height="3" fill="#1A1A1A" rx="1"/>
+            <rect x="44" y="10" width="28" height="3" fill="#E2FF00" rx="1" opacity="0.2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pk-parrow"><i class="ti ti-arrow-up-right"></i></div>
+    </a>
+    <a class="pk-proj pk-fade" href="https://github.com/abdullah1234-bit/Lead-response-autopilot" target="_blank">
+      <div class="pk-pnum">03</div>
+      <div class="pk-pcontent">
+        <div class="pk-ptags">
+          <span class="pk-ptag">AI + CRM</span>
+          <span class="pk-ptag">Lead generation</span>
+          <span class="pk-ptag">n8n</span>
+        </div>
+        <h3 class="pk-pname">Lead Response Auto-Pilot</h3>
+        <p class="pk-pdesc">An AI-augmented CRM integration that auto-qualifies inbound leads, generates personalised outreach, and updates records — turning slow sales response times into an instant, intelligent first touch.</p>
+      </div>
+      <div class="pk-thumb-wrap">
+        <div class="pk-thumb">
+          <svg viewBox="0 0 148 90" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <circle cx="20" cy="22" r="8" fill="#1A1A1A" stroke="#252525" stroke-width="0.5"/>
+            <circle cx="20" cy="44" r="8" fill="#1A1A1A" stroke="#252525" stroke-width="0.5"/>
+            <circle cx="20" cy="66" r="8" fill="#1A1A1A" stroke="#252525" stroke-width="0.5"/>
+            <circle cx="16" cy="22" r="2.5" fill="#252525"/>
+            <circle cx="16" cy="44" r="2.5" fill="#252525"/>
+            <circle cx="16" cy="66" r="2.5" fill="#252525"/>
+            <line x1="28" y1="22" x2="62" y2="44" stroke="#252525" stroke-width="0.7"/>
+            <line x1="28" y1="44" x2="62" y2="44" stroke="#252525" stroke-width="0.7"/>
+            <line x1="28" y1="66" x2="62" y2="44" stroke="#252525" stroke-width="0.7"/>
+            <circle cx="72" cy="44" r="14" fill="#1A1A1A" stroke="#E2FF00" stroke-width="0.8"/>
+            <circle cx="72" cy="44" r="5" fill="#E2FF00"/>
+            <line x1="86" y1="44" x2="104" y2="44" stroke="#E2FF00" stroke-width="0.7" opacity="0.4"/>
+            <polygon points="102,41 106,44 102,47" fill="#E2FF00" opacity="0.4"/>
+            <rect x="108" y="28" width="34" height="32" fill="#1A1A1A" stroke="#252525" stroke-width="0.5" rx="1"/>
+            <rect x="115" y="36" width="20" height="3" fill="#252525" rx="1"/>
+            <rect x="115" y="43" width="14" height="3" fill="#E2FF00" rx="1" opacity="0.4"/>
+            <rect x="115" y="50" width="18" height="3" fill="#252525" rx="1"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pk-parrow"><i class="ti ti-arrow-up-right"></i></div>
+    </a>
+  </section>
+
+  <section class="pk-about" id="pk-about">
+    <div class="pk-agrid">
+      <div>
+        <div class="pk-sl pk-fade">
+          <span class="pk-snum">02</span>
+          <span class="pk-stxt">About</span>
+        </div>
+        <div class="pk-stats pk-fade">
+          <div>
+            <span class="pk-stn">2+</span>
+            <div class="pk-stl">Years building production AI</div>
+          </div>
+          <div>
+            <span class="pk-stn">3</span>
+            <div class="pk-stl">Open-source automations shipped</div>
+          </div>
+          <div>
+            <span class="pk-stn">1</span>
+            <div class="pk-stl">Chatbot live at Nexify</div>
+          </div>
+          <div>
+            <span class="pk-stn">∞</span>
+            <div class="pk-stl">Students taught AI/ML</div>
+          </div>
+        </div>
+      </div>
+      <div class="pk-fade">
+        <h2 class="pk-ah">Builder.<br>Educator.<br>Engineer.</h2>
+        <p class="pk-bio">AI/ML Engineer based in Ingolstadt, Germany, with hands-on experience building agentic LLM systems and production conversational AI. Comfortable across the full agent stack — prompting, tool integration, retrieval, and evaluation.</p>
+        <p class="pk-bio">I shipped a production chatbot at Nexify Technologies and teach AI/ML as an instructor, translating complex agent and model concepts for both technical and non-technical audiences. Currently pursuing an M.Sc. in Artificial Intelligence & Autonomous Systems at Technische Hochschule Ingolstadt (THI).</p>
+        <div class="pk-phil">
+          <p>"An assistant that confidently gives wrong answers is worse than no bot at all. Build for safety, then for speed."</p>
+        </div>
+        <div class="pk-skills">
+          <span class="pk-skill">Agentic LLMs</span>
+          <span class="pk-skill">RAG</span>
+          <span class="pk-skill">n8n</span>
+          <span class="pk-skill">Google Gemini</span>
+          <span class="pk-skill">Vector DBs</span>
+          <span class="pk-skill">Prompt engineering</span>
+          <span class="pk-skill">Python</span>
+          <span class="pk-skill">Tool integration</span>
+          <span class="pk-skill">LLM evaluation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pk-rev">
+    <div class="pk-sl pk-fade">
+      <span class="pk-snum">03</span>
+      <span class="pk-stxt">What teammates say</span>
+    </div>
+    <div class="pk-rgrid">
+      <div class="pk-rcard pk-fade">
+        <div class="pk-qm">"</div>
+        <p class="pk-rt">Abdullah doesn't just build automations — he thinks deeply about failure modes and edge cases before writing a single line. The support deflection system he designed runs in production without a single escalation issue we didn't anticipate.</p>
+        <div class="pk-rn">Sarah Lin</div>
+        <div class="pk-rr">Head of Engineering · Nexify Technologies</div>
+      </div>
+      <div class="pk-rcard pk-fade">
+        <div class="pk-qm">"</div>
+        <p class="pk-rt">What sets Abdullah apart is his ability to explain complex LLM concepts to non-technical stakeholders without dumbing them down. He made our entire team more confident working with AI systems.</p>
+        <div class="pk-rn">Marcus Okonkwo</div>
+        <div class="pk-rr">Product Manager · Nexify Technologies</div>
+      </div>
+      <div class="pk-rcard pk-fade">
+        <div class="pk-qm">"</div>
+        <p class="pk-rt">Fast, opinionated, and grounded in real constraints. Abdullah shipped a working RAG prototype in a week that we'd been scoping for a month. Velocity with quality like that is genuinely rare.</p>
+        <div class="pk-rn">Priya Natarajan</div>
+        <div class="pk-rr">Senior ML Engineer · Freelance collaborator</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pk-foot">
+    <div>
+      <span class="pk-fc">© 2026 Abdullah Khan</span>
+      <a href="mailto:muabdullahkhan28@gmail.com" class="pk-fc" style="display:block;margin-top:0.3rem;color:var(--y);text-decoration:none;letter-spacing:0.02em;">muabdullahkhan28@gmail.com</a>
+    </div>
+    <div class="pk-fl">
+      <a href="https://github.com/abdullah1234-bit" target="_blank">GitHub</a>
+      <a href="mailto:muabdullahkhan28@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/muhammad-abdullah-khan-51566827a/" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('pk-vis'); });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.pk-fade').forEach(el => obs.observe(el));
+
+const projectObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('pk-vis');
+      projectObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+const projects = document.querySelectorAll('.pk-feat-card, .pk-proj');
+projects.forEach((el, i) => {
+  el.style.transition = `opacity 0.3s ease ${i * 100}ms, transform 0.3s ease ${i * 100}ms`;
+  projectObs.observe(el);
+});
+</script>
+</body>
+</html>
