@@ -218,6 +218,26 @@ body {
 .pk-fl a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mu); text-decoration: none; transition: color 0.2s; }
 .pk-fl a:hover { color: var(--y); }
 
+/* CONTACT MODAL */
+.pk-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 500; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.pk-overlay.open { display: flex; }
+.pk-modal { background: var(--sf); border: 0.5px solid var(--bd); width: 100%; max-width: 480px; padding: 2.5rem; position: relative; }
+.pk-modal-x { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: 0.5px solid var(--bd); color: var(--mu); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: border-color 0.2s, color 0.2s; }
+.pk-modal-x:hover { border-color: var(--y); color: var(--y); }
+.pk-modal-tag { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--y); }
+.pk-modal-h { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--wh); margin-top: 0.4rem; margin-bottom: 2rem; line-height: 1.1; }
+.pk-field { margin-bottom: 1.25rem; }
+.pk-field label { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mu); margin-bottom: 0.5rem; }
+.pk-field input, .pk-field textarea { width: 100%; background: var(--bg); border: 0.5px solid var(--bd); color: var(--wh); font-family: 'Space Grotesk', sans-serif; font-size: 14px; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; resize: none; }
+.pk-field input::placeholder, .pk-field textarea::placeholder { color: var(--mu); }
+.pk-field input:focus, .pk-field textarea:focus { border-color: rgba(226,255,0,0.5); }
+.pk-modal-submit { width: 100%; background: var(--y); color: var(--bg); border: none; padding: 0.9rem 1.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; transition: opacity 0.2s; }
+.pk-modal-submit:hover { opacity: 0.88; }
+.pk-modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.pk-modal-ok { display: none; text-align: center; padding: 2rem 0; }
+.pk-modal-ok i { font-size: 2.75rem; color: var(--y); }
+.pk-modal-ok p { font-size: 15px; color: var(--mu); margin-top: 0.75rem; line-height: 1.6; }
+
 /* FADE IN + SCALE */
 .pk-fade { opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.6s ease, transform 0.6s ease; }
 .pk-vis { opacity: 1; transform: translateY(0) scale(1); }
@@ -250,7 +270,7 @@ body {
       <a href="Muhammad_Abdullah_Khan_CV.pdf" download class="pk-cv-btn">
         <i class="ti ti-download" aria-hidden="true"></i> Download CV
       </a>
-      <a href="mailto:muabdullahkhan28@gmail.com" class="pk-cta">Hire me</a>
+      <button class="pk-cta" id="hire-btn">Hire me</button>
     </div>
   </nav>
 
@@ -520,26 +540,88 @@ body {
     </div>
   </footer>
 
+<!-- CONTACT MODAL -->
+<div class="pk-overlay" id="hire-overlay">
+  <div class="pk-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="pk-modal-x" id="modal-close" aria-label="Close"><i class="ti ti-x" aria-hidden="true"></i></button>
+    <p class="pk-modal-tag">Open to work · 2026</p>
+    <h2 class="pk-modal-h" id="modal-title">Let's build<br>something together</h2>
+    <form id="hire-form" action="https://formspree.io/f/xdavqorz" method="POST">
+      <div class="pk-field">
+        <label for="f-name">Your name</label>
+        <input type="text" id="f-name" name="name" placeholder="Sarah Lin" required>
+      </div>
+      <div class="pk-field">
+        <label for="f-email">Your email</label>
+        <input type="email" id="f-email" name="email" placeholder="sarah@company.com" required>
+      </div>
+      <div class="pk-field">
+        <label for="f-msg">Message</label>
+        <textarea id="f-msg" name="message" rows="4" placeholder="I'd like to discuss a potential opportunity..." required></textarea>
+      </div>
+      <button type="submit" class="pk-modal-submit" id="modal-submit">
+        Send message <i class="ti ti-arrow-right" aria-hidden="true"></i>
+      </button>
+    </form>
+    <div class="pk-modal-ok" id="modal-ok">
+      <i class="ti ti-circle-check" aria-hidden="true"></i>
+      <p>Message sent!<br>Abdullah will get back to you shortly.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('pk-vis'); });
 }, { threshold: 0.08 });
-
 document.querySelectorAll('.pk-fade').forEach(el => obs.observe(el));
 
 const projectObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('pk-vis');
-      projectObs.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('pk-vis'); projectObs.unobserve(e.target); }
   });
 }, { threshold: 0.08 });
-
 const projects = document.querySelectorAll('.pk-feat-card, .pk-proj');
 projects.forEach((el, i) => {
   el.style.transition = `opacity 0.3s ease ${i * 100}ms, transform 0.3s ease ${i * 100}ms`;
   projectObs.observe(el);
+});
+
+// Modal
+const overlay = document.getElementById('hire-overlay');
+const form    = document.getElementById('hire-form');
+const submitBtn = document.getElementById('modal-submit');
+const okMsg   = document.getElementById('modal-ok');
+
+function openModal() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+document.getElementById('hire-btn').addEventListener('click', openModal);
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Sending…';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      okMsg.style.display = 'block';
+    } else {
+      submitBtn.innerHTML = 'Failed — try again';
+      submitBtn.disabled = false;
+    }
+  } catch {
+    submitBtn.innerHTML = 'Failed — try again';
+    submitBtn.disabled = false;
+  }
 });
 </script>
 </body>
